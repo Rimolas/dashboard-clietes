@@ -10,7 +10,8 @@ st.set_page_config(page_title="Dashboard de Clientes", layout="wide", initial_si
 # Carregar dados
 @st.cache_data
 def load_data():
-    df_monthly = pd.read_csv('/home/ubuntu/monthly_metrics.csv')
+    # No Streamlit Cloud, o arquivo CSV estará no mesmo diretório que o script
+    df_monthly = pd.read_csv('monthly_metrics.csv')
     df_monthly['Month'] = pd.to_datetime(df_monthly['Month'])
     df_monthly['TotalInactive'] = df_monthly['TotalEver'] - df_monthly['TotalActive']
     return df_monthly
